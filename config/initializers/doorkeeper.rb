@@ -14,7 +14,7 @@ Doorkeeper.configure do
   # end
 
   resource_owner_from_credentials do
-    User.authenticate(params[:email], params[:password])
+    User.authenticate(params[:email], params[:password]) || redirect_to(new_user_session_url)
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
@@ -32,6 +32,9 @@ Doorkeeper.configure do
   #     redirect_to sign_in_url
   #   end
   # end
+  admin_authenticator do
+    current_user || redirect_to(new_user_session_url)
+  end
 
   # You can use your own model classes if you need to extend (or even override) default
   # Doorkeeper models such as `Application`, `AccessToken` and `AccessGrant.
