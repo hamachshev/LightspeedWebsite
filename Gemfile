@@ -78,3 +78,5 @@ gem "doorkeeper", "~> 5.6"
 gem "dockerfile-rails", ">= 1.6", :group => :development
 
 gem "stripe", "~> 11.2"
+
+gem "dotenv-rails", "~> 3.1"

@@ -99,6 +99,10 @@ GEM
       rails (>= 3.0.0)
     doorkeeper (5.6.9)
       railties (>= 5)
+    dotenv (3.1.0)
+    dotenv-rails (3.1.0)
+      dotenv (= 3.1.0)
+      railties (>= 6.1)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -260,6 +264,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dockerfile-rails (>= 1.6)
   doorkeeper (~> 5.6)
+  dotenv-rails (~> 3.1)
   importmap-rails
   jbuilder
   puma (~> 5.0)
