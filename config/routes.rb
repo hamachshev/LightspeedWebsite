@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: %i[create]
-      get '/setupPayment', to: 'setup_intent_payment#create'
+      post '/setupPayment', to: 'setup_intent_payment#create'
     end
   end
 end
