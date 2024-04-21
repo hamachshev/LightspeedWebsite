@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: %i[create]
+      get '/setupPayment', to: 'setup_intent_payment#create'
     end
   end
 end
