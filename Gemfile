@@ -76,3 +76,5 @@ gem "devise", "~> 4.9"
 gem "doorkeeper", "~> 5.6"
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "stripe", "~> 11.2"
