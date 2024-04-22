@@ -4,7 +4,10 @@ module Api
       skip_before_action :doorkeeper_authorize!, only: %i[create]
 
       def create
-        user = User.new(email: user_params[:email], password: user_params[:password])
+        Stripe.api_key = ENV['STRIPE_TEST_API_KEY']
+        customer = Stripe::Customer.create
+
+        user = User.new(email: user_params[:email], password: user_params[:password], first_name: user_params[:first_name], last_name: user_params[:last_name], stripe_user_id: customer['id'])
 
         client_app = Doorkeeper::Application.find_by(uid: params[:client_id])
 
@@ -41,7 +44,7 @@ module Api
       private
 
       def user_params
-        params.permit(:email, :password)
+        params.permit(:email, :password, :first_name, :last_name)
       end
 
       def generate_refresh_token
