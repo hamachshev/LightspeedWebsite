@@ -5,7 +5,10 @@ module Api
 
       def create
         Stripe.api_key = ENV['STRIPE_TEST_API_KEY']
-        customer = Stripe::Customer.create
+        customer = Stripe::Customer.create({
+                                             name: "#{user_params[:first_name]} #{user_params[:last_name]}",
+                                             email: user_params[:email]
+                                           })
 
         user = User.new(email: user_params[:email], password: user_params[:password], first_name: user_params[:first_name], last_name: user_params[:last_name], stripe_user_id: customer['id'])
 
