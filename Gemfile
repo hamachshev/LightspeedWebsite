@@ -80,3 +80,6 @@ gem "dockerfile-rails", ">= 1.6", :group => :development
 gem "stripe", "~> 11.2"
 
 gem "dotenv-rails", "~> 3.1"
+
+gem "azure-storage-blob", "~> 2.0", require: false
+
