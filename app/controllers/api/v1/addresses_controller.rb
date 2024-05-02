@@ -50,7 +50,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def address_params
-          params.require(:address).permit(:address_line1, :address_line2, :zone_code, :zipcode, :country_code)
+          params.require(:address).permit(:name, :address_line1, :address_line2, :city, :zone_code, :zipcode, :country_code)
         end
     end
   end
