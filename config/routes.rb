@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :products
 
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: %i[create]
+      resources :addresses
       post '/setupPayment', to: 'setup_intent_payment#create'
     end
   end
