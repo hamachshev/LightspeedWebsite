@@ -15,7 +15,7 @@ module Api
             exp_month: pm['exp_month'],
             exp_year: pm['exp_year']
           }
-          array.append method
+          data.append method
         end
 
         render json: {data: data}
