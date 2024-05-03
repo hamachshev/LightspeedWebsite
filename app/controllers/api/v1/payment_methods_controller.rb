@@ -12,8 +12,9 @@ module Api
           method = {
             id: pm['id'],
             brand: pm['card']['brand'],
-            exp_month: pm['exp_month'],
-            exp_year: pm['exp_year']
+            exp_month: pm['card']['exp_month'],
+            exp_year: pm['card']['exp_year'],
+            last4: pm['card']['last4']
           }
           data.append method
         end
