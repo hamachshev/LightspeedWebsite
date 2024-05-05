@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :push_notifications
 
   resources :products
 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
       post '/setupPayment', to: 'payment_methods#create'
       get '/paymentMethods', to: 'payment_methods#index'
       resources :orders, only: %i[create show]
+      post '/deviceTokens', to: 'device_tokens#create'
     end
   end
 end

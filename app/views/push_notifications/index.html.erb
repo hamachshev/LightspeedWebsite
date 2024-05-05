@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Push notifications</h1>
+
+<div id="push_notifications">
+  <% @push_notifications.each do |push_notification| %>
+    <%= render push_notification %>
+    <p>
+      <%= link_to "Show this push notification", push_notification %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New push notification", new_push_notification_path %>

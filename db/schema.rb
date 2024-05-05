@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_05_042207) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_05_155617) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -102,6 +102,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_042207) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "push_notifications", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.integer "badge"
+    t.string "sound"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -113,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_042207) do
     t.string "first_name"
     t.string "last_name"
     t.string "stripe_user_id"
+    t.string "device_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

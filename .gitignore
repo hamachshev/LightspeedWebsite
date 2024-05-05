@@ -36,3 +36,6 @@
 
 #ignore .env
 /.env
+
+#ignore key.p8
+key.p8
