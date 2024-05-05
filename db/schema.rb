@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_02_204452) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_05_042207) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -81,6 +81,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_02_204452) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "address_id", null: false
+    t.integer "shipper_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "payment_method_id", null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["shipper_id"], name: "index_orders_on_shipper_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "cost"
@@ -107,4 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_02_204452) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users", column: "customer_id"
+  add_foreign_key "orders", "users", column: "shipper_id"
 end
