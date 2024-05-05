@@ -21,7 +21,7 @@ module Api
         @order = Order.new(order_params.merge! customer: current_user)
 
         if @order.save
-          render :show, status: :created, location: @order
+          render :show, status: :created, location: api_v1_order_url(@order)
         else
           render json: @order.errors, status: :unprocessable_entity
         end
