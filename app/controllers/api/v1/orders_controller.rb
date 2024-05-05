@@ -18,7 +18,7 @@ module Api
       # POST /orders
       # POST /orders.json
       def create
-        @order = Order.new(order_params.merge! customer: current_user.id)
+        @order = Order.new(order_params.merge! customer: current_user)
 
         if @order.save
           render :show, status: :created, location: @order
