@@ -13,4 +13,6 @@ class User < ApplicationRecord
   end
 
   has_many :addresses
+  has_many :orders, class_name: "Order", foreign_key: "customer_id"
+  has_many :fulfillments, class_name: "Order", foreign_key: "shipper_id"
 end
