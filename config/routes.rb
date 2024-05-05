@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :addresses
       post '/setupPayment', to: 'payment_methods#create'
       get '/paymentMethods', to: 'payment_methods#index'
-      resources :orders, only: %i[create]
+      resources :orders, only: %i[create, show]
     end
   end
 end
