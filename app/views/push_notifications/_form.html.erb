@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+    <div >
+      <%= f.label :user %>
+      <%= f.select :user, options_for_select(@users.map { |user| [user.email, user.id] }) %>
+    </div>
+
+
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>

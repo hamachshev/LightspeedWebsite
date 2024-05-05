@@ -13,6 +13,7 @@ class PushNotificationsController < ApplicationController
   # GET /push_notifications/new
   def new
     @push_notification = PushNotification.new
+    @users = User.all
   end
 
   # GET /push_notifications/1/edit
@@ -21,10 +22,16 @@ class PushNotificationsController < ApplicationController
 
   # POST /push_notifications or /push_notifications.json
   def create
-    @push_notification = PushNotification.new(push_notification_params)
+    @device_token = User.find(push_notification_params[:user]).device_token
+    notification       = Apnotic::Notification.new(@device_token)
+    notification.alert = "Notification from Apnotic!"
+    # send (this is a blocking call)
+    response = connection.push(notification)
+
+    @push_notification = PushNotification.new(push_notification_params.except(:user))
 
     respond_to do |format|
-      if @push_notification.save
+      if @push_notification.save && response.ok? == true
         format.html { redirect_to push_notification_url(@push_notification), notice: "Push notification was successfully created." }
         format.json { render :show, status: :created, location: @push_notification }
       else
@@ -65,6 +72,6 @@ class PushNotificationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def push_notification_params
-      params.require(:push_notification).permit(:title, :body, :badge, :sound)
+      params.require(:push_notification).permit(:title, :body, :badge, :sound, :user)
     end
 end
