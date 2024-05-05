@@ -12,8 +12,8 @@
   <% end %>
 
     <div >
-      <%= f.label :user %>
-      <%= f.select :user, options_for_select(@users.map { |user| [user.email, user.id] }) %>
+      <%= form.label :user %>
+      <%= form.select :user, options_for_select(@users.map { |user| [user.email, user.id] }) %>
     </div>
 
 
