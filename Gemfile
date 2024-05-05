@@ -83,3 +83,5 @@ gem "dotenv-rails", "~> 3.1"
 
 gem "azure-storage-blob", "~> 2.0", require: false
 
+
+gem "apnotic", "~> 1.7"

@@ -68,6 +68,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    apnotic (1.7.2)
+      connection_pool (~> 2)
+      net-http2 (>= 0.18.3, < 2)
     azure-storage-blob (2.0.3)
       azure-storage-common (~> 2.0)
       nokogiri (~> 1, >= 1.10.8)
@@ -140,6 +143,7 @@ GEM
       faraday (~> 1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    http-2 (0.11.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -170,6 +174,8 @@ GEM
     multipart-post (2.4.0)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
+    net-http2 (0.18.5)
+      http-2 (~> 0.11)
     net-imap (0.4.10)
       date
       net-protocol
@@ -296,6 +302,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  apnotic (~> 1.7)
   azure-storage-blob (~> 2.0)
   bootsnap
   capybara
