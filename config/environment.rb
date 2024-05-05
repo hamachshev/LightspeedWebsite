@@ -12,7 +12,7 @@ File.open("key.p8", "w") do |f|
 end
 
 # Set read permissions on a file
-File.chmod(0644, 'key.p8')
+File.chmod(666, 'key.p8')
 
 
 APNS_CONNECTION = Apnotic::Connection.new(
