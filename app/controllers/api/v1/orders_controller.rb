@@ -31,7 +31,7 @@ module Api
       # PATCH/PUT /orders/1.json
       def update
         if @order.update(order_params)
-          render :show, status: :ok, location: @order
+          render :show, status: :ok, location: api_v1_order_url(@order)
         else
           render json: @order.errors, status: :unprocessable_entity
         end
