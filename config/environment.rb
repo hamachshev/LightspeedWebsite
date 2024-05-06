@@ -5,14 +5,18 @@ require_relative "application"
 # Initialize the Rails application.
 Rails.application.initialize!
 
-File.open("key.p8", "w") do |f|
+# Specify the file path
+file_path = Rails.root.join('key.p8')
 
+# Create the file
+File.open(file_path, "w") do |file|
   f.write(Rails.application.credentials.dig(:apple,:push_notification_key))
-
 end
-File.chown(1000, 1000, 'key.p8')
-# Set read permissions on a file
-File.chmod(666, 'key.p8')
+
+# Set ownership and permissions
+File.chown(1000, 1000, file_path)  # Change ownership to UID 1000 (rails user) and GID 1000 (rails group)
+File.chmod(0644, file_path)        # Set permissions to 0644 (-rw-r--r--)
+
 
 
 APNS_CONNECTION = Apnotic::Connection.new(
