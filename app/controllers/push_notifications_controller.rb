@@ -26,7 +26,7 @@ class PushNotificationsController < ApplicationController
     notification       = Apnotic::Notification.new(@device_token)
     notification.alert = "Notification from Apnotic!"
     # send (this is a blocking call)
-    response = connection.push(notification)
+    response = APNS_CONNECTION.push(notification)
 
     @push_notification = PushNotification.new(push_notification_params.except(:user))
 
