@@ -10,7 +10,7 @@ File.open("key.p8", "w") do |f|
   f.write(Rails.application.credentials.dig(:apple,:push_notification_key))
 
 end
-
+File.chown(1000, 1000, 'key.p8')
 # Set read permissions on a file
 File.chmod(666, 'key.p8')
 
