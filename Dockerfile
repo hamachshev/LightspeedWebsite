@@ -59,8 +59,8 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     mkdir /data && \
-    mkdir pushNotifications && \
-    chown -R 1000:1000 db log storage tmp pushNotifications /data
+
+    chown -R 1000:1000 db log storage tmp key.p8 /data
 USER 1000:1000
 
 # Deployment options
