@@ -9,7 +9,7 @@ Rails.application.initialize!
 file_path = Rails.root.join('key.p8')
 
 # Create the file
-File.open(file_path, "w") do |file|
+File.open(file_path, "w") do |f|
   f.write(Rails.application.credentials.dig(:apple,:push_notification_key))
 end
 
