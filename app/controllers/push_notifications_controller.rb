@@ -22,8 +22,9 @@ class PushNotificationsController < ApplicationController
 
   # POST /push_notifications or /push_notifications.json
   def create
-    @device_token = User.find(push_notification_params[:user]).device_token
-    notification       = Apnotic::Notification.new(@device_token)
+    @users = User.all
+    device_token = User.find(push_notification_params[:user]).device_token
+    notification       = Apnotic::Notification.new("580c430794a298552578b380bf6fc07abc6bb0135f1a0b6bcf86bf8efc498ec8")
     notification.alert = "Notification from Apnotic!"
     # send (this is a blocking call)
     response = APNS_CONNECTION.push(notification)

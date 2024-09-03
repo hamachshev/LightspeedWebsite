@@ -3,9 +3,9 @@ module Api
 
     class DeviceTokensController < ApplicationController
       def create
-        current_user.device_token = user_params[0]
+        current_user.device_token = user_params[:device_token]
         if current_user.save
-          render json: {device_token: user_params[0]}
+          render json: {device_token: user_params[:device_token]}
         end
       end
 
