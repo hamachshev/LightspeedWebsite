@@ -42,7 +42,7 @@ jobs:
       run: docker tag lightspeed/lightspeed lightspeed.azurecr.io/lightspeed/lightspeed:${{ github.sha }}
          # Push the Docker image to Azure Container Registry
     - name: Push Docker Image to Azure Container Registry
-      run: docker push lightspeed.azurecr.io/lightspeed:${{ github.sha }}
+      run: docker push lightspeed.azurecr.io/lightspeed/lightspeed:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
