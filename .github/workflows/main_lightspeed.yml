@@ -29,6 +29,7 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
+        platforms: linux/amd64
         push: true
         tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}/lightspeed:${{ github.sha }}
         file: ./Dockerfile
