@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://lightspeed.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_f1467d69d616406cb182e80e34350053 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_c04f95068ead410bac952a1bfec5e2b9 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_2f9db319cba646a68b988e5efc287093 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_a2b44a03e216494ebfa9f9a5964ee754 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f1467d69d616406cb182e80e34350053 }}/lightspeed:${{ github.sha }}
+        tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2f9db319cba646a68b988e5efc287093 }}/lightspeed:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'lightspeed'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_81f15846bedb486399a027c4f60f9585 }}
-        images: 'lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f1467d69d616406cb182e80e34350053 }}/lightspeed:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cd3a8bb5d54a4017aebd5065152acbe2 }}
+        images: 'lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2f9db319cba646a68b988e5efc287093 }}/lightspeed:${{ github.sha }}'
