@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts = ["0.0.0.0:3000"]
+  config.hosts = ["0.0.0.0:3000", "lightspeed-fpe4g4dmfmapd3df.eastus-01.azurewebsites.net"]
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
