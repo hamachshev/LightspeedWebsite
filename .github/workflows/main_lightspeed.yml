@@ -26,13 +26,23 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}
         password: ${{ secrets.AzureAppService_ContainerPassword_9fb880a94d514220823ffa162bd18937 }}
 
-    - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        platforms: linux/amd64
-        push: true
-        tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}/lightspeed:${{ github.sha }}
-        file: ./Dockerfile
+    # - name: Build and push container image to registry
+    #   uses: docker/build-push-action@v3
+    #   with:
+    #     platforms: linux/amd64
+    #     push: true
+    #     tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}/lightspeed:${{ github.sha }}
+    #     file: ./Dockerfile
+         # Build the Docker image for the linux/amd64 platform
+    - name: Build Docker Image
+      run: docker build -t lightspeed/lightspeed . --platform linux/amd64
+
+    # Tag the Docker image
+    - name: Tag Docker Image
+      run: docker tag lightspeed/lightspeed lightspeed.azurecr.io/lightspeed/lightspeed:${{ github.sha }}
+         # Push the Docker image to Azure Container Registry
+    - name: Push Docker Image to Azure Container Registry
+      run: docker push lightspeed.azurecr.io/lightspeed:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
