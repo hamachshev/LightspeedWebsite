@@ -2,7 +2,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << "lightspeed-fpe4g4dmfmapd3df.eastus-01.azurewebsites.net"
   # Code is not reloaded between requests.
   config.cache_classes = true
 
