@@ -4,7 +4,7 @@ module Api
       skip_before_action :doorkeeper_authorize!, only: %i[create]
 
       def create
-        Stripe.api_key = ENV['STRIPE_TEST_API_KEY']
+        Stripe.api_key = Rails.credentials.dig(:stripe, :test_api_key)
         customer = Stripe::Customer.create({
                                              name: "#{user_params[:first_name]} #{user_params[:last_name]}",
                                              email: user_params[:email]

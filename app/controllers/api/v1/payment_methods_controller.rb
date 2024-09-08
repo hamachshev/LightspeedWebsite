@@ -28,14 +28,14 @@ module Api
         render json: {
           setUpIntent: setUpIntent['client_secret'],
           customer: current_resource_owner.stripe_user_id,
-          publishableKey: ENV['STRIPE_TEST_PUBLISHABLE_KEY']
+          publishableKey: Rails.credentials.dig(:stripe, :test_publishable_key)
         }
       end
 
       private
 
       def setup_stripe_api_key
-        Stripe.api_key = ENV['STRIPE_TEST_API_KEY']
+        Stripe.api_key = Rails.credentials.dig(:stripe, :test_api_key)
       end
 
       def current_resource_owner
