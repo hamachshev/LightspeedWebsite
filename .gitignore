@@ -39,3 +39,7 @@
 
 #ignore key.p8
 key.p8
+
+.DS_Store
+
+AuthKey_3NRUMUU6WC.p8

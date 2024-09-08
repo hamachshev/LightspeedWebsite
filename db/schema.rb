@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_05_05_155617) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,15 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_155617) do
     t.string "country_code", default: "US", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "city", null: false
     t.string "name", default: "", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "oauth_access_tokens", force: :cascade do |t|
-    t.integer "resource_owner_id"
-    t.integer "application_id", null: false
+    t.bigint "resource_owner_id"
+    t.bigint "application_id", null: false
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
@@ -82,10 +85,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_155617) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "customer_id", null: false
-    t.integer "address_id", null: false
-    t.integer "shipper_id"
+    t.bigint "product_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "address_id", null: false
+    t.bigint "shipper_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "payment_method_id", null: false
