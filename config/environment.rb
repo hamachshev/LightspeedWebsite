@@ -1,4 +1,4 @@
-require 'apnotic'
+# require 'apnotic'
 # Load the Rails application.
 require_relative "application"
 
@@ -19,9 +19,9 @@ Rails.application.initialize!
 
 
 
-APNS_CONNECTION = Apnotic::Connection.new(
-  auth_method: :token,
-  cert_path: "AuthKey_3NRUMUU6WC.p8" ,
-  key_id: "3NRUMUU6WC",
-  team_id: "6QJ83977FH"
-)
+# APNS_CONNECTION = Apnotic::Connection.new(
+#   auth_method: :token,
+#   cert_path: "AuthKey_3NRUMUU6WC.p8" ,
+#   key_id: "3NRUMUU6WC",
+#   team_id: "6QJ83977FH"
+# )
