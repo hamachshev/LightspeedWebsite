@@ -23,26 +23,15 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://lightspeed.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_9fb880a94d514220823ffa162bd18937 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0299c1ebd32647d49a6df5dcc4866beb }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_811bf4bf80194cc5bca0b88328fe8911 }}
 
-    # - name: Build and push container image to registry
-    #   uses: docker/build-push-action@v3
-    #   with:
-    #     platforms: linux/amd64
-    #     push: true
-    #     tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}/lightspeed:${{ github.sha }}
-    #     file: ./Dockerfile
-         # Build the Docker image for the linux/amd64 platform
-    - name: Build Docker Image
-      run: docker build -t lightspeed/lightspeed . --platform linux/amd64
-
-    # Tag the Docker image
-    - name: Tag Docker Image
-      run: docker tag lightspeed/lightspeed lightspeed.azurecr.io/lightspeed/lightspeed:${{ github.sha }}
-         # Push the Docker image to Azure Container Registry
-    - name: Push Docker Image to Azure Container Registry
-      run: docker push lightspeed.azurecr.io/lightspeed/lightspeed:${{ github.sha }}
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0299c1ebd32647d49a6df5dcc4866beb }}/lightspeed/lightspeed:${{ github.sha }}
+        file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -58,5 +47,5 @@ jobs:
       with:
         app-name: 'lightspeed'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_dead9e0bf81d46499beed9681962473a }}
-        images: 'lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d4111b3a9556493ba1f69c5e0ba09f50 }}/lightspeed:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_0ef8e346941441149ab0e94a0659c6d0 }}
+        images: 'lightspeed.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0299c1ebd32647d49a6df5dcc4866beb }}/lightspeed/lightspeed:${{ github.sha }}'
